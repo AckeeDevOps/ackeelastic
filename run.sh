@@ -12,7 +12,7 @@ ulimit -l unlimited
 
 # Ackee: add backup credentials to ES config dir
 
-echo $GS_CRED_FILE_CONTENT > /elasticsearch/config/gs.json
+echo -e "$GS_CRED_FILE_CONTENT" > /elasticsearch/config/gs.json
 chown elasticsearc /elasticsearch/config/gs.json
 chmod 600 /elasticsearch/config/gs.json
 
