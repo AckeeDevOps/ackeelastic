@@ -26,18 +26,23 @@ Create minimal service:
     kubectl create -f es-svc.yaml --namespace whatever
     kubectl create -f es-master.yaml --namespace whatever
 Wait for the container to come up
+
     kubectl create -f es-client.yaml --namespace whatever
 Wait for the container to come up
+
     kubectl create -f es-data.yaml --namespace whatever
 Wait for the container to come up
 
 Get service IP:
+
     E_IP=`kubectl get svc elasticsearch --namespace misko|grep ^elasticsearch|awk '{print $3}'`
 
 And verify the installation:
+
     curl http://$E_IP:9200/_cluster/health?pretty
 
 Then scale the service:
+
     kubectl scale deployment es-master --replicas 2 --namespace whatever
     kubectl scale deployment es-client --replicas 2 --namespace whatever
     kubectl scale deployment es-data --replicas 3 --namespace whatever
@@ -47,6 +52,7 @@ You can upload testing index:
     curl -v -XPOST 'http://$E_IP:9200/shakespeare/_bulk?pretty' --data-binary @shakespeare.json
 
 And check it out:
+
     curl http://$E_IP:9200/_cat/indices
 
 ## Backing up
