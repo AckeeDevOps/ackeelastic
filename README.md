@@ -62,12 +62,12 @@ Backups will be done using cronjob specified in `k8s/gcs-backup.yml`. This is no
 ### Create GCS repository (Requires valid credentials, see "Before you start"
 
     curl -s -XPUT http://$E_IP:9200/_snapshot/my_gcs_repository_on_compute_engine?pretty -d '{
-  "type": "gcs",
-  "settings": {
-    "bucket": "BUCKET_NAME_IN_GOOGLE_STORAGE",
-    "service_account": "gs.json"
-  }
-}'
+      "type": "gcs",
+      "settings": {
+        "bucket": "BUCKET_NAME_IN_GOOGLE_STORAGE",
+        "service_account": "gs.json"
+      }
+    }'
 
 ### Create the snapshot
 
