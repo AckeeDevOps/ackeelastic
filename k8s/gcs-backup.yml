@@ -1,0 +1,18 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - curl -s -XPUT http://$FIXME:9200/_snapshot/my_gcs_repository_on_compute_engine/snapshot_`date +%Y%m%d%H%M`?wait_for_completion=true
+          restartPolicy: OnFailure
