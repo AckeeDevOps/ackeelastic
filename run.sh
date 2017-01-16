@@ -17,7 +17,7 @@ if [ -z "$GS_CRED_FILE_CONTENT" -o "$GS_NO_BACKUP" == "yes" ]; then
     exit 1
 fi
 
-if [ "$GS_NO_BACKUP" != "yes"]; then
+if [ "$GS_NO_BACKUP" != "yes" ]; then
   echo "$GS_CRED_FILE_CONTENT" | base64 -d > /elasticsearch/config/gs.json
   chown elasticsearch /elasticsearch/config/gs.json
   chmod 600 /elasticsearch/config/gs.json
