@@ -35,7 +35,7 @@ Wait for the container to come up
 
 Get service IP:
 
-    E_IP=`kubectl get svc elasticsearch --namespace misko|grep ^elasticsearch|awk '{print $3}'`
+    E_IP=`kubectl get svc elasticsearch --namespace whatever|grep ^elasticsearch|awk '{print $3}'`
 
 And verify the installation:
 
@@ -53,7 +53,12 @@ You can upload testing index:
 
 And check it out:
 
-    curl http://$E_IP:9200/_cat/indices
+    curl http://elastic:changeme@$E_IP:9200/_cat/indices
+
+DON'T FORGET to change the default password!!!
+    curl -XPUT -u elastic '$E_IP:9200/_xpack/security/user/elastic/_password' -d '{
+       "password" : "elasticpassword"
+    }'
 
 ## Backing up
 
