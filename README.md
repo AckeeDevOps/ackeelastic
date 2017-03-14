@@ -3,7 +3,7 @@
 ## Prerequisities
 
 You will need:
-* A cluster with 1GB * number of containers you want to run of free memory on your cluster
+* A cluster with 1GB * number of containers you want to run of free memory on your cluster (tested with no big load with 2048M)
 * A bucket + credentials for storing snapshots (see "Creating a bucket"@https://www.elastic.co/guide/en/elasticsearch/plugins/master/repository-gcs-usage.html)
 
 ## Before you start
@@ -24,6 +24,9 @@ Create minimal service:
 
     kubectl create -f es-discovery-svc.yaml --namespace whatever
     kubectl create -f es-svc.yaml --namespace whatever
+
+You can edit this file if you want to save money for the loadbalancer
+
     kubectl create -f es-master.yaml --namespace whatever
 Wait for the container to come up
 
@@ -55,7 +58,7 @@ And check it out:
 
     curl http://elastic:changeme@$E_IP:9200/_cat/indices
 
-DON'T FORGET to change the default password!!!
+DON'T FORGET to change the default password (changeme)!!!
     curl -XPUT -u elastic '$E_IP:9200/_xpack/security/user/elastic/_password' -d '{
        "password" : "elasticpassword"
     }'
