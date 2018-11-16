@@ -1,7 +1,7 @@
 # Ackee k8s Elasticsearch image + GCS backup plugin
 
-## Available versions:
-- v5.1.1
+## Available versions / tags:
+- 5.1.1
 
 ## Prerequisities
 
