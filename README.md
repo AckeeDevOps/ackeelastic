@@ -1,5 +1,8 @@
 # Ackee k8s Elasticsearch image + GCS backup plugin
 
+## Available versions:
+- v5.1.1
+
 ## Prerequisities
 
 You will need:
@@ -80,4 +83,3 @@ Backups will be done using cronjob specified in `k8s/gcs-backup.yml`. This is no
 ### Create the snapshot
 
     curl -s -XPUT http://$E_IP:9200/_snapshot/my_gcs_repository_on_compute_engine/SNAPSHOT_NAME?wait_for_completion=true
-
