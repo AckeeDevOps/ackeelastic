@@ -1,4 +1,4 @@
-FROM quay.io/pires/docker-elasticsearch-kubernetes:5.1.1
+FROM quay.io/pires/docker-elasticsearch-kubernetes:5.2.2
 
 RUN /elasticsearch/bin/elasticsearch-plugin install analysis-icu
 RUN /elasticsearch/bin/elasticsearch-plugin install -s repository-gcs 
